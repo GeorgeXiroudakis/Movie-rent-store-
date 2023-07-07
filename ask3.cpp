@@ -58,10 +58,11 @@ int main(){
     cout << "This is the list of your options:\n\n"; ///print options
     for (i = 0; i < info.size(); i++){
         cout << "Name: " << info[i].name << "    ---------    price: " << info[i].price << "    ---------    status: " << info[i].status << endl;
-    } 
+    }
+    cout << endl; 
     
     while(true){     //take movies he is interested in
-        cout << "Give the title of the movie you are interested in\n>";
+        cout << "Give the title of the movie you are interested in (-1 or exit to if you are done with your selection)\n>";
         cin >> title;
         
         if (title == "-1" || title == "exit") break;   //exit case
@@ -79,7 +80,7 @@ int main(){
         }
         
         cout << "If you want  to rent the movie for 3$ press 1\nIf you want to buy it for " << info[loc].price << "$ press 2\n>";
-        //check if bye op rend or invalid inpute
+        //check if bye or rend or invalid inpute
         try{
             cin >> mode;
             if ( (mode != 1 && mode != 2) || cin.fail() ) throw mode;
@@ -87,18 +88,17 @@ int main(){
             cerr << ("\ninvalid mode mode must be 1 or 2 as discribed you gave ") << mode << endl;
             error("invalid mode");
         }
+        
+        if ( mode != 0) {cerr << "\nMovie unavailabele for rend or purchase\n"; error("Movie unavailable");}
 
         //if to rent
-        if (mode == 1){
-            //if ( mode != 0) {cerr << "\nMovie unavailabele for rend or purchase\n"; error("Movie unavailable");}      //is this needed????
-
+        if (mode == 1){  
+        
             info[loc].status = 1; //change status in vector 
             cost += 3;          //uptates cost
 
         }else{
-            //same for bue
-
-            //if ( mode != 0) {cerr << "\nMovie unavailabele for rend or purchase\n"; error("Movie unavailable");}
+            //same for buy
 
             info[loc].status = 2;
             cost += info[loc].price;
@@ -107,7 +107,7 @@ int main(){
         cout << "\nYour cost so far is " << cost << endl << endl;    //print the cost so far
     }
     
-    cout << "\n\n\nYour tottal cost is " << cost;           //print tottal cost
+    cout << "\n\n\nYour tottal cost is " << cost << endl;           //print tottal cost
 
     ist.close();           //close file
 
@@ -118,6 +118,6 @@ int main(){
     //write new data
     for (i = 0; i < info.size(); i++) ofc << info[i].name << " " << info[i].price << " " << info[i].status << endl;
 
-    system("pause");   
+    //system("pause");   
     return 0;
 }
