@@ -1,0 +1,12 @@
+movie1 0 22
+movie2 0 20
+movie3 0 17
+movie4 0 7
+movie5 0 8
+movie6 0 10
+movie7 0 14
+movie8 0 27
+movie9 0 17
+movie10 0 6
+movie11 0 14
+movie12 0 43
